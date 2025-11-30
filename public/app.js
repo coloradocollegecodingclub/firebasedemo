@@ -14,6 +14,8 @@ import {
   query,
   orderBy,
   getDocs,
+  deleteDoc,
+  doc,
   serverTimestamp
 } from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js';
 
@@ -112,6 +114,22 @@ async function handleCreatePost(e) {
   }
 }
 
+// Delete post
+async function handleDeletePost(postId) {
+  if (!confirm('Are you sure you want to delete this post?')) {
+    return;
+  }
+
+  try {
+    await deleteDoc(doc(db, 'posts', postId));
+    showMessage('Post deleted successfully!', 'success');
+    await loadPosts();
+  } catch (error) {
+    console.error('Error deleting post:', error);
+    showMessage(`Error: ${error.message}`, 'error');
+  }
+}
+
 // Load posts
 async function loadPosts() {
   try {
@@ -139,16 +157,24 @@ function displayPosts(posts) {
     return;
   }
 
-  postsContainer.innerHTML = posts.map(post => `
-    <div class="post">
-      <h3 class="post-title">${escapeHtml(post.title)}</h3>
-      <p class="post-content">${escapeHtml(post.content)}</p>
-      <div class="post-meta">
-        <p>By: ${escapeHtml(post.userName)} (${escapeHtml(post.userEmail)})</p>
-        <p>Posted: ${post.createdAt ? new Date(post.createdAt.toDate()).toLocaleString() : 'Just now'}</p>
+  postsContainer.innerHTML = posts.map(post => {
+    const isOwner = auth.currentUser && post.userId === auth.currentUser.uid;
+    const deleteButton = isOwner ? `<button class="btn-delete" onclick="window.deletePost('${post.id}')">Delete</button>` : '';
+
+    return `
+      <div class="post">
+        <div class="post-header">
+          <h3 class="post-title">${escapeHtml(post.title)}</h3>
+          ${deleteButton}
+        </div>
+        <p class="post-content">${escapeHtml(post.content)}</p>
+        <div class="post-meta">
+          <p>By: ${escapeHtml(post.userName)} (${escapeHtml(post.userEmail)})</p>
+          <p>Posted: ${post.createdAt ? new Date(post.createdAt.toDate()).toLocaleString() : 'Just now'}</p>
+        </div>
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 // Escape HTML to prevent XSS
@@ -183,6 +209,9 @@ onAuthStateChanged(auth, (user) => {
   mainContent.classList.remove('hidden');
   updateUI(user);
 });
+
+// Expose delete function to window for onclick handler
+window.deletePost = handleDeletePost;
 
 // Event listeners
 signInBtn.addEventListener('click', handleSignIn);

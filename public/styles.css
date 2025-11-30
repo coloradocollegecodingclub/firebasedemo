@@ -149,6 +149,18 @@ button {
   background-color: #2563eb;
 }
 
+.btn-delete {
+  background-color: #ef4444;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.btn-delete:hover {
+  background-color: #dc2626;
+}
+
 /* Text */
 .help-text {
   margin-top: 1.5rem;
@@ -215,11 +227,19 @@ button {
   background-color: #f9fafb;
 }
 
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
 .post-title {
   font-size: 1.25rem;
   font-weight: 600;
   color: #1f2937;
-  margin-bottom: 0.5rem;
+  flex: 1;
 }
 
 .post-content {
