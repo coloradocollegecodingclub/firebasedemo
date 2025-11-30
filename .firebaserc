@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "cchackathon-b8850"
+  },
+  "targets": {
+    "cchackathon-b8850": {
+      "hosting": {
+        "demo": [
+          "cchackathon-demo"
+        ]
+      }
+    }
+  }
+}
