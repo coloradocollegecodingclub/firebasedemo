@@ -19,7 +19,15 @@ import {
   serverTimestamp
 } from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js';
 
-// Firebase configuration
+// ========================================
+// FIREBASE CONFIGURATION
+// ========================================
+// To use this app with YOUR Firebase project:
+// 1. Go to https://console.firebase.google.com/project/YOUR_PROJECT/settings/general
+// 2. Scroll to "Your apps" → Click web icon </>
+// 3. Copy your config and replace the values below
+// See QUICK_START.md for detailed instructions
+// ========================================
 const firebaseConfig = {
   apiKey: "AIzaSyAskVOutWGBZeGXGcEdqgF2DOlTDcfJPeA",
   authDomain: "cchackathon-b8850.firebaseapp.com",
@@ -28,6 +36,7 @@ const firebaseConfig = {
   messagingSenderId: "440249067262",
   appId: "1:440249067262:web:c9089e76fd9ab71d5da7af"
 };
+// ========================================
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

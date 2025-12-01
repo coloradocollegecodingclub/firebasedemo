@@ -12,3 +12,9 @@
     }
   }
 }
+
+// INSTRUCTIONS FOR NEW USERS:
+// 1. Replace "cchackathon-b8850" with YOUR Firebase project ID
+// 2. Remove or update the "targets" section if you don't need custom hosting
+// 3. To find your project ID: https://console.firebase.google.com/ → Click your project → See URL
+// Example: If URL is "console.firebase.google.com/project/my-project", use "my-project"

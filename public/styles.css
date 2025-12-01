@@ -21,8 +21,33 @@ h1 {
   font-size: 2.25rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: #1f2937;
+}
+
+/* Info Banner */
+.info-banner {
+  background-color: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.info-banner p {
+  margin: 0;
+  color: #92400e;
+}
+
+.info-banner a {
+  color: #b45309;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.info-banner a:hover {
+  color: #92400e;
 }
 
 h2 {

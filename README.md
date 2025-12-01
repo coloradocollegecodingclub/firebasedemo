@@ -4,6 +4,10 @@ A simple demonstration of Google authentication and Firestore database using van
 
 **No frameworks. No build process. Just 3 files!**
 
+## 🚀 Want to Use This? → See [QUICK_START.md](QUICK_START.md)
+
+**New users:** The QUICK_START guide will get you running in 10 minutes with YOUR own Firebase project!
+
 ## Features
 
 - ✅ Google Sign-In with Firebase Auth
